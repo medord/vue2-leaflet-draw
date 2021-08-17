@@ -17,6 +17,10 @@ export default {
       type: String,
       default: 'topright'
     },
+    drawOptions:{
+      type: Object,
+      default : { position : "topRight"}
+    }
   },
 
   mounted() {
@@ -40,9 +44,7 @@ export default {
         })
       ];
 
-      new L.Toolbar2.DrawToolbar({
-          position: this.position
-      }).addTo(map);
+      new L.Toolbar2.DrawToolbar(this.drawOptions).addTo(map);
 
       map.on('draw:created', function (e) {
         var type = e.layerType,
